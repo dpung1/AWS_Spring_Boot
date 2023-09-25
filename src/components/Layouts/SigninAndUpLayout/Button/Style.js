@@ -18,6 +18,10 @@ export const SButton = css`
     line-height: 18px;
     color: #ffffff;
     background-color: #0095f6;
+
+    &:disabled {
+        opacity: 0.7;
+    }
 `;
 
 
