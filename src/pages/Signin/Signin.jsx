@@ -10,13 +10,14 @@ import Input from '../../components/Layouts/SigninAndUpLayout/Input/Input';
 import Button from '../../components/Layouts/SigninAndUpLayout/Button/Button';
 import OrBar from '../../components/Layouts/SigninAndUpLayout/OrBar/OrBar';
 import { useNavigate } from 'react-router-dom';
+import { signin } from '../../apis/api/account';
 
 
 function Signin(props) {
     const navigate = useNavigate();
 
     const emptyAccount = {
-        phoneAndEmailAndUsername: "",
+        phoneOrEmailOrUsername: "",
         loginPassword: ""
     }
 
@@ -36,19 +37,31 @@ function Signin(props) {
         setIsAccountValuesEmpty(Object.values(account).includes(""))
     }, [account])
 
+    const handleSiginSubmit = async () => {
+        try {
+            await signin(account);
+
+        }catch(error) {
+            setErrorMsg(error.response.data.errorMessage);
+        }
+    }
+
     return (
         <SigninAndUpLayout>
             <Top>
                 <div>
-                    <Input placeholder={"전화번호, 사용자 이름 또는 이메일"} name={"phoneAndEmailAndUsername"} changeAccount={changeAccount} />
+                    <Input placeholder={"전화번호, 사용자 이름 또는 이메일"} name={"phoneOrEmailOrUsername"} changeAccount={changeAccount} />
                     <Input type={"password"} placeholder={"비밀번호"} name={"loginPassword"} changeAccount={changeAccount} />
-                    <Button text={"로그인"} disabled={isAccountValuesEmpty}/>
+                    <Button text={"로그인"} disabled={isAccountValuesEmpty} onClick={handleSiginSubmit}/>
                     <OrBar />
                     <div css={S.SKakaoBox}>
                         <button css={S.SKakaoButton}>
                             <RiKakaoTalkFill css={S.SKakaoLogo}/>
                             카카오로 로그인
                         </button>
+                    </div>
+                    <div>
+                        {errorMsg}
                     </div>
                 </div>
             </Top>

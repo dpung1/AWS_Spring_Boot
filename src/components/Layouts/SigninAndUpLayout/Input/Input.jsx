@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import * as S from "./Style"
-import { NAME, PASSWORD, PHONE_AND_EMAIL, USERNAME } from '../../../../constants/regex';
+import { NAME, PASSWORD, PHONE_OR_EMAIL, USERNAME } from "../../../../constants/regex"
 import { FaRegCircleXmark, FaRegCircleCheck } from 'react-icons/fa6'
 
 function Input({ type, placeholder, name, changeAccount}) {
@@ -20,7 +20,7 @@ function Input({ type, placeholder, name, changeAccount}) {
         let regex= null;
 
         switch(e.target.name) {
-            case "phoneAndEmail": regex = PHONE_AND_EMAIL; break;
+            case "phoneOrEmail": regex = PHONE_OR_EMAIL; break;
             case "name": regex = NAME; break;
             case "username": regex = USERNAME; break;
             case "password": regex = PASSWORD; break;
@@ -32,7 +32,7 @@ function Input({ type, placeholder, name, changeAccount}) {
             return;
 
         }else if(!!regex && regex.test(value)) {
-            setInputState(<><FaRegCircleXmark /></>);
+            setInputState(<><FaRegCircleCheck /></>);
             
         }else {
             setInputState("");
