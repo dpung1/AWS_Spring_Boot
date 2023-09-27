@@ -9,10 +9,10 @@ function App() {
   return (
     <RootLayout>
       <Routes>
-        <Route path='/' element={ <AuthRoute elments={ <div>HOME</div> } />} />
-        <Route path='/accounts/emailsignup/' element={ <AuthRoute elments={ <Signup />} />} />
-        <Route path='/accounts/login/' element={ <AuthRoute elments={ <Signin />} />} />
-        
+        <Route path='/' element={ <AuthRoute element={ <div>HOME</div> } /> } />
+        <Route path='/accounts/emailsignup' element={ <AuthRoute element={ <Signup /> } /> } />
+        <Route path='/accounts/login' element={ <AuthRoute element={ <Signin /> } /> } />
+      
         <Route path='/:username' element={<div>test2</div>}/>
         <Route path='/explore' element={<div>test3</div>}/>
       </Routes>
