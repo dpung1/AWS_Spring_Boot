@@ -8,16 +8,22 @@ import { Reset } from 'styled-reset';
 import { Global } from '@emotion/react';
 import { Common } from './Styles/Global/Common';
 import { RecoilRoot } from 'recoil';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const quertClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RecoilRoot>
-    <BrowserRouter>
-      <Global styles={Common}/>
-      <Reset />
-      <App />
-    </BrowserRouter>
-  </RecoilRoot>
+  <QueryClientProvider client={quertClient}>
+    <RecoilRoot>
+      <BrowserRouter>
+        <Global styles={Common}/>
+        <Reset />
+        <App />
+      </BrowserRouter>
+    </RecoilRoot>
+  </QueryClientProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

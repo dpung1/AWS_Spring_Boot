@@ -11,10 +11,12 @@ import Button from '../../components/Layouts/SigninAndUpLayout/Button/Button';
 import OrBar from '../../components/Layouts/SigninAndUpLayout/OrBar/OrBar';
 import { useNavigate } from 'react-router-dom';
 import { signin } from '../../apis/api/account';
+import { useQueryClient } from 'react-query';
 
 
 function Signin(props) {
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
 
     const emptyAccount = {
         phoneOrEmailOrUsername: "",
@@ -41,7 +43,7 @@ function Signin(props) {
         try {
             const response = await signin(account);
             localStorage.setItem("accessToken", "Bearer " + response.data);
-            navigate("/");
+            window.location.reload();
         }catch(error) {
             setErrorMsg(error.response.data.errorMessage);
         }
