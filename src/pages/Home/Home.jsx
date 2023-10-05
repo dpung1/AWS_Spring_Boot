@@ -3,6 +3,7 @@ import React from 'react';
 import { css } from "@emotion/react";
 import { getUser } from '../../apis/api/user';
 import jwt_decode from 'jwt-decode';
+import RootContainer from '../../components/Container/RootContainer/RootContainer';
 
 
 function Home(props) {
@@ -18,9 +19,9 @@ function Home(props) {
 
 
     return (
-        <div>
+        <RootContainer>
             
-        </div>
+        </RootContainer>
     );
 }
 
