@@ -8,7 +8,7 @@ function ModalHeader({ title, leftButton, rightButton }) {
     return (
         <div css={S.SLayout}>
             {leftButton}
-            <h1>{title}</h1>
+            <h1 css={S.STitle}>{title}</h1>
             {rightButton}
             
         </div>
